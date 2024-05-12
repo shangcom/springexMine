@@ -2,10 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-                           http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
-    <!--    <context:component-scan> 태그는 지정한 패키지 및 그 하위 패키지에서 이러한 어노테이션이 붙은 클래스들을 자동으로 찾아내어 빈으로 등록-->
+<!--    <context:component-scan> 태그는 지정한 패키지 및 그 하위 패키지에서 이러한 어노테이션이 붙은 클래스들을 자동으로 찾아내어 빈으로 등록-->
 <!--    <context:component-scan base-package="org.zerock.springexmine."-->
 
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
@@ -31,5 +31,13 @@
         <property name="dataSource" ref="dataSource" />
         <property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>
     </bean>
+
+    <mybatis:scan base-package="org.zerock.springexmine.mapper"></mybatis:scan>
+
+<!--    ModelMapperConfig를 스프링빈으로 인식할 수 있도록 경로 적어줌.-->
+    <context:component-scan base-package="org.zerock.springexmine.config"/>
+
+    <!--    TodoService를 스프링빈으로 인식하고 applicationContext에 빈으로 등록할 수 있도록 경로 적어줌.-->
+    <context:component-scan base-package="org.zerock.springexmine.service"/>
 
 </beans>
