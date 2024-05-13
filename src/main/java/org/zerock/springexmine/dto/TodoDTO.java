@@ -15,7 +15,7 @@ public class TodoDTO {
 
     private Long tno;
 
-    @NotEmpty //
+    @NotEmpty
     private String title;
 
     @Future

@@ -50,17 +50,7 @@ public class PageRequestDTO {
         return (page - 1) * 10;
     }
 
-//    public String getLink() {
-//        if(link == null){
-//            StringBuilder builder = new StringBuilder();
-//
-//            builder.append("page=" + this.page);
-//
-//            builder.append("&size=" + this.size);
-//            link = builder.toString();
-//        }
-//        return link;
-//    }
+
 
     public String getLink() {
         StringBuilder builder = new StringBuilder();
